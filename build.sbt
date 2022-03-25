@@ -5,7 +5,7 @@ lazy val root = (project in file("."))
     organization := "com.hunorkovacs",
     name := "zio-http4s-example",
     version := "0.0.1-SNAPSHOT",
-    scalaVersion := "2.13.8",
+    scalaVersion := "3.1.1",
     libraryDependencies ++= Seq(
       "org.http4s" %% "http4s-blaze-server" % Http4sVersion,
       "org.http4s" %% "http4s-dsl"          % Http4sVersion,
