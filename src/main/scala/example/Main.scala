@@ -1,16 +1,15 @@
-package com.hunorkovacs.ziohttp4stry
+package example
 
-import zio._
-import zio.interop.catz._
-import zio.interop.catz.implicits._
-import org.http4s._
+import org.http4s.HttpRoutes
 import org.http4s.blaze.server.BlazeServerBuilder
 import org.http4s.dsl.Http4sDsl
-import org.http4s.implicits._
+import zio.interop.catz._
+import zio.{Task, ZEnv, ZIO, ZIOAppDefault}
 
-object Main extends App {
+object Main extends ZIOAppDefault {
 
   private val dsl = Http4sDsl[Task]
+
   import dsl._
 
   private val helloWorldService = HttpRoutes
@@ -19,7 +18,7 @@ object Main extends App {
     }
     .orNotFound
 
-  def run(args: List[String]): zio.URIO[zio.ZEnv, ExitCode] =
+  def run =
     ZIO
       .runtime[ZEnv]
       .flatMap { implicit runtime =>
@@ -29,7 +28,6 @@ object Main extends App {
           .resource
           .toManagedZIO
           .useForever
-          .exitCode
       }
 
 }
