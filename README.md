@@ -25,7 +25,6 @@ Here's how to put together almost the simplest [http4s](https://http4s.org/) ser
 package com.hunorkovacs.ziohttp4stry
 
 import zio._
-import zio.console._
 import zio.interop.catz._
 import zio.interop.catz.implicits._
 
