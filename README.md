@@ -3,7 +3,6 @@
 Here's how to put together almost the simplest [http4s](https://http4s.org/) server with [ZIO](https://zio.dev/).
 
 * See the `zio1` branch for a version that works with ZIO v1.
-* zio-interop-cats has no release that supports zio 2.0.0-RC2 (RC3 removes ZManaged)
 
 ### Run:
 
