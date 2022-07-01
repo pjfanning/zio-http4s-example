@@ -15,10 +15,10 @@ Here's how to put together almost the simplest [http4s](https://http4s.org/) ser
 ### Dependencies:
 
 ```scala
-"org.http4s" %% "http4s-blaze-server" % "1.0.0-M32",
-"org.http4s" %% "http4s-dsl"          % "1.0.0-M32",
-"dev.zio"    %% "zio"                 % "2.0.0-RC2",
-"dev.zio"    %% "zio-interop-cats"    % "3.3.0-RC2"
+"org.http4s" %% "http4s-blaze-server" % "1.0.0-M33",
+"org.http4s" %% "http4s-dsl"          % "1.0.0-M33",
+"dev.zio"    %% "zio"                 % "2.0.0",
+"dev.zio"    %% "zio-interop-cats"    % "3.3.0"
 ```
 
 ### Code:
@@ -46,13 +46,12 @@ object Main extends ZIOAppDefault {
 
   def run =
     ZIO
-      .runtime[ZEnv]
+      .runtime
       .flatMap { implicit runtime =>
         BlazeServerBuilder[Task]
           .bindHttp(8080, "localhost")
           .withHttpApp(helloWorldService)
           .resource
-          .toManagedZIO
           .useForever
       }
 
